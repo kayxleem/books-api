@@ -59,6 +59,18 @@ Returns result from [Ice And Fire API](https://www.anapioficeandfire.com/api/boo
 Create
 
     POST /api/v1/books
+    
+expected inputs
+
+    ● name
+    ● isbn
+    ● authors
+    ● country
+    ● number_of_pages
+    ● publisher
+    ● release_date
+
+
 
 Read
 
