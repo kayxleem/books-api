@@ -23,6 +23,10 @@ Set up your .env
     DB_USERNAME=root (Replace with yours)
     DB_PASSWORD= (Replace with yours)
 
+generate your laravel key
+
+    php artisan key:generate
+
 
 Install dependencies (if you have `composer` locally):
 
@@ -59,7 +63,7 @@ Returns result from [Ice And Fire API](https://www.anapioficeandfire.com/api/boo
 Create
 
     POST /api/v1/books
-    
+
 expected inputs
 
     ● name
