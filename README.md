@@ -7,9 +7,9 @@ It also includes the feature tests
 # Getting Started
 
 # Requirements
-  - PHP Server - EC2 Ubuntu Instance
+  - PHP 8.1 and above
   - MySQL
-  - All variables are declared under ``
+  - Composer
 
 Clone the Repository on target machine:
 
