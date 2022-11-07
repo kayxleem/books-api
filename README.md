@@ -28,6 +28,10 @@ Install dependencies (if you have `composer` locally):
 
     composer install
 
+    or 
+
+    composer update
+
 Run database migrations:
 
     php artisan migrate

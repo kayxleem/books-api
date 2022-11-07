@@ -82,6 +82,5 @@ class BookController extends Controller
         $name = $book->name;
         $book->delete();
         return $this->successResponseWithMessage('', 'The book ' . $name . 'was deleted successfully', 204);
-        //return response('', Response::HTTP_NO_CONTENT);
     }
 }
