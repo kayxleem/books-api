@@ -40,7 +40,6 @@ class ExternalBookApiTest extends TestCase
         $client = new Client(['handler' => $handlerStack]);
         
         $response = $client->getJson('api/external-books?name=A Game of Thrones');
-        //dd($response->getStatusCode());
         $this->assertEquals(200,$response->getStatusCode());
     }
 }

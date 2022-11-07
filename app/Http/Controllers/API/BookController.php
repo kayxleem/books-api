@@ -67,7 +67,6 @@ class BookController extends Controller
     public function update(Request $request, Book $book)
     {
         $book->update($request->all());
-        //return new BookResource($book);
         return $this->successResponseWithMessage(new BookResource($book), 'The book ' . $book->name . 'was updated successfully');
     }
 
@@ -81,6 +80,6 @@ class BookController extends Controller
     {
         $name = $book->name;
         $book->delete();
-        return $this->successResponseWithMessage('', 'The book ' . $name . 'was deleted successfully', 204);
+        return $this->successResponseWithMessage('', 'The book ' . $name . ' was deleted successfully', 204);
     }
 }
