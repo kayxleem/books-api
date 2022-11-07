@@ -60,6 +60,15 @@ Read
 
     GET /api/v1/books
 
+Read End points can also be searched with filters
+
+    GET /api/v1/books?filter[name]=game
+
+Filters can also be chained
+
+    ?filter[name]=game&filter[country]=United&filter[publisher]=Bantam&filter[release_date]=1996
+
+
 Update
 
     PATCH /api/v1/books/:id
