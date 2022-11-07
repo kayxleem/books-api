@@ -8,6 +8,8 @@ use App\Http\Resources\BookResource;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Spatie\QueryBuilder\QueryBuilder;
+use Spatie\QueryBuilder\AllowedFilter;
 
 class BookController extends Controller
 {
@@ -18,17 +20,18 @@ class BookController extends Controller
      */
     public function index(Request $request)
     {
-        $book = Book::all();
-        if($book->count() > 0)
-        {
+
+        $book = QueryBuilder::for(Book::class)
+            ->allowedFilters(['name', 'country','publisher',AllowedFilter::scope('release_date')])
+            ->get();
+        if ($book->count() > 0) {
             return $this->successResponse(BookResource::collection($book));
-        }else{
+        } else {
             return $this->successResponse();
         }
-        
     }
 
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -37,8 +40,8 @@ class BookController extends Controller
      */
     public function store(BookRequest $request)
     {
-        $book= Book::create($request->all());
-        return $this->successResponse(new BookResource($book),'',Response::HTTP_CREATED);
+        $book = Book::create($request->all());
+        return $this->successResponse(new BookResource($book), '', Response::HTTP_CREATED);
     }
 
     /**
@@ -52,7 +55,7 @@ class BookController extends Controller
         return $this->successResponse(new BookResource($book));
     }
 
-    
+
 
     /**
      * Update the specified resource in storage.
@@ -65,8 +68,7 @@ class BookController extends Controller
     {
         $book->update($request->all());
         //return new BookResource($book);
-        return $this->successResponseWithMessage(new BookResource($book), 'The book '.$book->name. 'was updated successfully');
-  
+        return $this->successResponseWithMessage(new BookResource($book), 'The book ' . $book->name . 'was updated successfully');
     }
 
     /**
@@ -77,9 +79,9 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        $name=$book->name;
+        $name = $book->name;
         $book->delete();
-        return $this->successResponseWithMessage('', 'The book '.$name. 'was deleted successfully',204);
+        return $this->successResponseWithMessage('', 'The book ' . $name . 'was deleted successfully', 204);
         //return response('', Response::HTTP_NO_CONTENT);
     }
 }
