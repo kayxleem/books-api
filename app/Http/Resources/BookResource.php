@@ -22,7 +22,7 @@ class BookResource extends JsonResource
             'number_of_pages' => $this->number_of_pages,
             'publisher' => $this->publisher,
             'country' => $this->country,
-            'release_date' => Carbon::parse($this->released)->format('Y-m-d')
+            'release_date' => Carbon::parse($this->release_date)->format('Y-m-d')
         ];
     }
 }
